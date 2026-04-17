@@ -494,7 +494,7 @@ p  { margin: 0; }
     .hero { min-height: auto; padding: 84px 0 48px; }
     .hero__title {
         max-width: none;
-        font-size: clamp(26px, 6vw, 44px);
+        font-size: clamp(32px, 7vw, 54px);
         line-height: 0.98;
         letter-spacing: 0;
     }
@@ -1221,8 +1221,8 @@ p  { margin: 0; }
         padding: 84px 0 40px;
     }
     .hero__title {
-        font-size: clamp(22px, 7.6vw, 34px);
-        line-height: 1.02;
+        font-size: clamp(26px, 8.6vw, 40px);
+        line-height: 1;
         gap: 2px;
         max-width: none;
         letter-spacing: 0;
