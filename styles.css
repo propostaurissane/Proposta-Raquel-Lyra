@@ -396,6 +396,9 @@ p  { margin: 0; }
     max-width: 100%;
     text-wrap: balance;
 }
+.hero__title-nowrap {
+    white-space: nowrap;
+}
 .hero__title-script {
     font-family: var(--ff-script);
     color: var(--yellow);
