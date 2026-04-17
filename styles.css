@@ -1221,7 +1221,7 @@ p  { margin: 0; }
         padding: 84px 0 40px;
     }
     .hero__title {
-        font-size: clamp(26px, 8.6vw, 40px);
+        font-size: clamp(28px, 9.5vw, 44px);
         line-height: 1;
         gap: 2px;
         max-width: none;
