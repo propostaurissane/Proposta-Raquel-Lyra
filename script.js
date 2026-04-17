@@ -10,6 +10,9 @@
 (function () {
     'use strict';
 
+    // Deixe true quando quiser reativar a tela de acesso.
+    const GATE_ENABLED = false;
+
     // Hash SHA-256 do código de acesso
     const EXPECTED_HASH = 'c4425fa1cae5311cbdce7fa7c4ff6f8d911ae76bcb37a4ad42ad4662d2a4c797';
     const STORAGE_KEY   = 'rl2026_gate';
@@ -50,10 +53,14 @@
     // -----------------------------------------------------
     function unlock() {
         document.body.classList.remove('is-locked');
-        gate.classList.add('is-hidden');
-        content.hidden = false;
-        // remove o overlay depois da transição
-        setTimeout(() => { gate.style.display = 'none'; }, 550);
+        if (gate) {
+            gate.classList.add('is-hidden');
+            // remove o overlay depois da transição
+            setTimeout(() => { gate.style.display = 'none'; }, 550);
+        }
+        if (content) {
+            content.hidden = false;
+        }
         try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (_) {}
     }
 
@@ -61,6 +68,7 @@
     // Erro no gate
     // -----------------------------------------------------
     function showError(msg) {
+        if (!errorEl || !input || !form) return;
         errorEl.textContent = msg;
         input.value = '';
         input.focus();
@@ -79,34 +87,40 @@
     // -----------------------------------------------------
     // Submit
     // -----------------------------------------------------
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        errorEl.textContent = '';
-        const attempt = normalize(input.value);
-        if (!attempt) {
-            showError('Digite o código para continuar.');
-            return;
-        }
-        try {
-            const hash = await sha256(attempt);
-            if (hash === EXPECTED_HASH) {
-                unlock();
-            } else {
-                showError('Código incorreto. Verifique com a equipe.');
+    if (!GATE_ENABLED) {
+        unlock();
+    } else if (form && input && errorEl) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorEl.textContent = '';
+            const attempt = normalize(input.value);
+            if (!attempt) {
+                showError('Digite o código para continuar.');
+                return;
             }
-        } catch (err) {
-            showError('Erro ao validar. Tente novamente.');
-        }
-    });
+            try {
+                const hash = await sha256(attempt);
+                if (hash === EXPECTED_HASH) {
+                    unlock();
+                } else {
+                    showError('Código incorreto. Verifique com a equipe.');
+                }
+            } catch (err) {
+                showError('Erro ao validar. Tente novamente.');
+            }
+        });
+    }
 
     // -----------------------------------------------------
     // Persistência na sessão (não precisa digitar a cada reload)
     // -----------------------------------------------------
-    try {
-        if (sessionStorage.getItem(STORAGE_KEY) === '1') {
-            unlock();
-        }
-    } catch (_) {}
+    if (GATE_ENABLED) {
+        try {
+            if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+                unlock();
+            }
+        } catch (_) {}
+    }
 
     // -----------------------------------------------------
     // Logout
@@ -114,7 +128,9 @@
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
             try { sessionStorage.removeItem(STORAGE_KEY); } catch (_) {}
-            location.reload();
+            if (GATE_ENABLED) {
+                location.reload();
+            }
         });
     }
 
@@ -122,7 +138,7 @@
     // Foco no input ao carregar
     // -----------------------------------------------------
     window.addEventListener('load', () => {
-        if (!content.hidden) return; // já desbloqueado
+        if (!GATE_ENABLED || !content || !content.hidden) return; // já desbloqueado
         setTimeout(() => input && input.focus(), 200);
     });
 
