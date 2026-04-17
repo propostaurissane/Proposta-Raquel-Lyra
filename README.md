@@ -1,14 +1,12 @@
 # Estratégia de Pré-Campanha — Raquel Lyra 2026
 
-Página privada (single-page) apresentando o documento estratégico de pré-campanha, com gate de acesso por código e visual inspirado no banner oficial "Vem Futuro, Vem Raquel".
+Página privada (single-page) apresentando o documento estratégico de pré-campanha, com gate de acesso por código e visual alinhado à identidade oficial da proposta.
 
 ---
 
 ## 🔑 Código de acesso
 
-```
-vemfuturo2026
-```
+O código de acesso está configurado internamente no projeto.
 
 O gate aceita variações (maiúsculas/minúsculas, acentos, espaços) — são normalizadas antes da comparação.
 
@@ -46,16 +44,16 @@ code/
 
 Existem **3 espaços reservados** para imagens oficiais:
 
-| Local | ID no HTML | Onde aparece |
+| Local | Referência | Onde aparece |
 |---|---|---|
-| Hero (banner principal) | `data-placeholder="hero"` | Primeira dobra, coluna direita |
-| Break 1 | `data-placeholder="campanha-1"` | Depois do Diagnóstico |
-| Break 2 | `data-placeholder="campanha-2"` | Depois do Posicionamento |
+| Hero (banner principal) | Hero | Primeira dobra |
+| Break 1 | Separador cromático | Depois do Diagnóstico |
+| Break 2 | Separador cromático | Depois do Posicionamento |
 
-Para trocar um placeholder por imagem real:
+Para inserir imagens reais no futuro:
 
 1. Coloque a imagem na raiz do projeto (ou crie a pasta `images/`).
-2. Em [`index.html`](index.html), substitua o bloco `<div class="photo-placeholder ...">…</div>` correspondente por:
+2. Em [`index.html`](index.html), insira a tag de imagem no trecho correspondente da seção:
    ```html
    <img src="images/hero.jpg" alt="Raquel Lyra" class="hero__photo-img">
    ```
@@ -113,7 +111,7 @@ git push
 
 ---
 
-## 🎨 Paleta (extraída do banner "Vem Futuro")
+## 🎨 Paleta
 
 | Cor | Hex |
 |---|---|
@@ -135,7 +133,7 @@ O gate atual impede acesso casual, mas alguém tecnicamente versado pode ver o c
 
 ```bash
 npm install -g staticrypt
-staticrypt index.html --password "vemfuturo2026" --short -o protegido.html
+staticrypt index.html --password "sua-senha-segura" --short -o protegido.html
 ```
 
 Isso gera um `protegido.html` com o conteúdo **criptografado com AES-256** — só quem digita a senha consegue ver qualquer coisa, nem pelo "View Source". Depois você renomeia `protegido.html` → `index.html` e publica.

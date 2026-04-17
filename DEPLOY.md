@@ -122,7 +122,7 @@ https://whimsical-unicorn-a1b2c3.netlify.app
 
 ✅ **Seu site está no ar!** Clique no link e teste.
 
-> Pra acessar o conteúdo, digite o código: `vemfuturo2026`
+> Pra acessar o conteúdo, use o código de acesso configurado no projeto.
 
 ---
 
@@ -155,7 +155,7 @@ Quando você quiser mudar texto, trocar foto, etc.:
 
 ## 🔐 Sobre a senha
 
-- **Código atual:** `vemfuturo2026`
+- **Código atual:** definido internamente no projeto
 - Quem tem o link + o código, entra. Quem só tem o link, não.
 - Pra trocar o código: veja a seção "Trocar o código" no [README.md](README.md).
 

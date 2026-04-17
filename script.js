@@ -1,7 +1,6 @@
 /* =========================================================
    GATE DE ACESSO — Raquel Lyra 2026
    -----------------------------------------------------------
-   Código de acesso (frase-chave): vemfuturo2026
    Proteção: SHA-256 hash comparison + sessionStorage
    Observação: Proteção client-side, adequada para uso interno
    da equipe. Para blindagem criptográfica do conteúdo, usar
@@ -11,7 +10,7 @@
 (function () {
     'use strict';
 
-    // Hash SHA-256 de "vemfuturo2026"
+    // Hash SHA-256 do código de acesso
     const EXPECTED_HASH = '56b94c7c5961519de77b6f6c4e10b7d8c6537130c72e9cb4d75e74b52e2bb994';
     const STORAGE_KEY   = 'rl2026_gate';
 

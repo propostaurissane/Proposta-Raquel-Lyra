@@ -147,21 +147,19 @@ p  { margin: 0; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-}
-.gate__title-script {
-    font-family: var(--ff-script);
-    font-weight: 700;
-    color: var(--yellow);
-    font-size: 0.72em;
-    transform: rotate(-4deg);
-    text-shadow: 0 4px 22px rgba(0,0,0,0.18);
-    -webkit-text-stroke: 0;
-    letter-spacing: 0.01em;
+    gap: 8px;
 }
 .gate__title-bold {
     text-shadow: 0 6px 30px rgba(0,0,0,0.28);
     letter-spacing: 0.02em;
+}
+.gate__title-sub {
+    font-family: var(--ff-head);
+    font-size: 0.34em;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
 }
 .gate__subtitle {
     font-size: 15px;
