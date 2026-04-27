@@ -462,7 +462,8 @@ p  { margin: 0; }
     border: none;
     border-radius: 0;
 }
-.hero__doc-date::before {
+.hero__doc-date::before,
+.hero__doc-date::after {
     content: "";
     width: 26px;
     height: 2px;
@@ -524,10 +525,9 @@ p  { margin: 0; }
     .hero__scroll {
         position: static;
         transform: none;
-        margin: 28px clamp(20px, 4vw, 48px) 0;
+        margin: 28px 24px 0;
         width: fit-content;
-        max-width: calc(100% - clamp(40px, 8vw, 96px));
-        justify-content: flex-start;
+        max-width: calc(100% - 48px);
     }
 }
 
@@ -1260,12 +1260,11 @@ p  { margin: 0; }
     }
     .hero__scroll {
         margin: 24px 18px 0;
-        width: fit-content;
-        max-width: calc(100% - 36px);
-        justify-content: flex-start;
+        width: calc(100% - 36px);
+        justify-content: center;
         font-size: 11px;
         letter-spacing: 0.1em;
-        padding: 11px 16px;
+        padding: 11px 14px;
     }
     .section__title {
         font-size: clamp(30px, 11vw, 42px);
